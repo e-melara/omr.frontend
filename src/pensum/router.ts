@@ -16,12 +16,12 @@ export const PensumRoute: RouteRecordRaw = {
       name: "materias-administrador",
       component: () => import("./pages/Admin/Pensum.vue"),
     },
-    /* {
-      path: "student",
-      name: "pensum-student",
-      component: () => import("./pages/PensumList.vue"),
-    },
     {
+      path: "administrador/estudiantes",
+      name: "estudiantes",
+      component: () => import("./pages/AlumnoList.vue"),
+    },
+    /* {
       path: "asesoria",
       name: "pensum-asesoria",
       component: () => import("./pages/Asesoria.vue"),

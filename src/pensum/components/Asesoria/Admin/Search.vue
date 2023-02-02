@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { ref } from "vue-demi";
 
+const emits = defineEmits(['search'])
+
 const carnet = ref()
 const onSubmitEvent = () => {
-  console.log("click submit", carnet.value);
+  emits('search',  { q: carnet.value })
 };
 </script>
 
@@ -23,7 +25,7 @@ const onSubmitEvent = () => {
             type="text"
             class="form-control"
             id="inputPassword2"
-            placeholder="Carnet"
+            placeholder="Buscar"
             v-model="carnet"
           />
         </div>

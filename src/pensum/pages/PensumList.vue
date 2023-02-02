@@ -31,6 +31,7 @@
 import { toRefs } from "vue";
 import { useRouter } from "vue-router";
 
+// @ts-ignore
 import { usePensum } from "@/pensum/composables/usePensum";
 
 // @ts-ignore
@@ -41,6 +42,7 @@ import List from "../components/Pensum/List.vue";
 // @ts-ignore
 import Leyenda from "../components/Pensum/Leyenda.vue";
 
+// @ts-ignore
 import { excelExportFile } from "@/exportacion";
 
 const pensum = usePensum();
