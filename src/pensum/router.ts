@@ -1,22 +1,22 @@
 import type { RouteRecordRaw } from "vue-router";
 
-export const NAME_ROUTE = "/pensum";
+export const NAME_ROUTE = "/";
 
 export const PensumRoute: RouteRecordRaw = {
   path: NAME_ROUTE,
   component: () => import("@/shared/LayoutComponent.vue"),
   children: [
     {
-      path: "list",
-      name: "pensum-list",
+      path: "materias",
+      name: "materias-student-list",
       component: () => import("./pages/Pensum.vue"),
     },
     {
-      path: "asesor",
-      name: "pensum-asesor",
+      path: "administrador/materias",
+      name: "materias-administrador",
       component: () => import("./pages/Admin/Pensum.vue"),
     },
-    {
+    /* {
       path: "student",
       name: "pensum-student",
       component: () => import("./pages/PensumList.vue"),
@@ -25,6 +25,6 @@ export const PensumRoute: RouteRecordRaw = {
       path: "asesoria",
       name: "pensum-asesoria",
       component: () => import("./pages/Asesoria.vue"),
-    },
+    }, */
   ],
 };

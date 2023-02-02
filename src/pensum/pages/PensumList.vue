@@ -1,26 +1,28 @@
 <template>
-  <BreadCumbs title="Pensum" :button="true" />
-  <div class="card">
-    <div class="card-header">
-      <div>
-        <div class="header-top">
-          <h5 class="m-0">Materias</h5>
-          <div class="" style="float: right" v-if="viewBtnAsesoria">
-            <b-dropdown id="dropdown-1" text="Asesoria" class="m-md-2">
-              <b-dropdown-item @click="clickDescargarFileExcel">
-                Descargar horarios
-              </b-dropdown-item>
-              <b-dropdown-item @click="goToAsesoria">
-                {{ studentEnrolled ? "Ver asesoria" : "Iniciar asesoria" }}
-              </b-dropdown-item>
-            </b-dropdown>
+  <div>
+    <BreadCumbs title="Pensum" :button="true" />
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="header-top">
+            <h5 class="m-0">Materias</h5>
+            <div class="" style="float: right" v-if="viewBtnAsesoria">
+              <b-dropdown id="dropdown-1" text="Asesoria" class="m-md-2">
+                <b-dropdown-item @click="clickDescargarFileExcel">
+                  Descargar horarios
+                </b-dropdown-item>
+                <b-dropdown-item @click="goToAsesoria">
+                  {{ studentEnrolled ? "Ver asesoria" : "Iniciar asesoria" }}
+                </b-dropdown-item>
+              </b-dropdown>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="card-body">
-      <Leyenda />
-      <List :keys="list.keys" :items="list.items" />
+      <div class="card-body">
+        <Leyenda />
+        <List :keys="list.keys" :items="list.items" />
+      </div>
     </div>
   </div>
 </template>
