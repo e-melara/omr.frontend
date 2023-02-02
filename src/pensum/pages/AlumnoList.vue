@@ -4,7 +4,7 @@
     <div class="file-content">
       <div class="card">
         <div class="card-header">
-          <Search @search="searchStudent" @add-student="agregarEstudiante" />
+          <Search @search="searchStudent" @add-student="agregarEstudiante" :view-add="addButtonShow" />
         </div>
         <b-table
           striped
@@ -113,16 +113,21 @@ import Search from "../components/Asesoria/Admin/Search.vue";
 
 import * as zod from "zod";
 import { storeToRefs } from "pinia";
-import { onMounted, ref } from "vue";
+import { computed, onMounted, ref } from "vue";
+import { toFormValidator } from "@vee-validate/zod";
 import { useForm, Field, ErrorMessage } from "vee-validate";
 
+import { useAuthStore } from "../../stores/authStore";
 import { useEstudiante } from "../../stores/useEstudiante";
-import { toFormValidator } from "@vee-validate/zod";
 
 const store = useEstudiante();
+const authStore = useAuthStore();
 const { getData } = storeToRefs(store);
 
 const open = ref<boolean>(false);
+const addButtonShow = computed(() =>
+  authStore.authorization("ROL_ADMINISTRADOR_CREAR_USUARIO")
+);
 
 const headers = [
   { key: "nombres", label: "Nombres", sortable: false },
@@ -168,7 +173,10 @@ const { meta, handleSubmit } = useForm({
 
 const submit = handleSubmit(async (values) => {
   const numeroAleatorio = Math.round(Math.random() * 100);
-  const arrayApellidos = values.apellidos.toUpperCase().replace(/\s/, "").split("")
+  const arrayApellidos = values.apellidos
+    .toUpperCase()
+    .replace(/\s/, "")
+    .split("");
   const documento = `${arrayApellidos[0]}${
     arrayApellidos[1]
   }${numeroAleatorio}${new Date().getFullYear()}`;
@@ -180,10 +188,10 @@ const submit = handleSubmit(async (values) => {
     apellidos: values.apellidos,
     type: "STUDENT",
   };
-  store.crearUsuario(params).then( async () => {
+  store.crearUsuario(params).then(async () => {
     await store.getListadoEstudiantes();
     open.value = false;
-  })
+  });
 });
 
 onMounted(() => {

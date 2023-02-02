@@ -22,6 +22,9 @@ export const useAuthStore = defineStore("useAuthStore", () => {
       configuration.value = IRols;
       isAuthenticated.value = true;
     },
+    authorization(rol: string) {
+      return configuration.value.roles.includes(rol);
+    },
     getLogout() {
       token.value = undefined;
       persona.value = undefined;
