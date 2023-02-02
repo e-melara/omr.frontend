@@ -1,0 +1,41 @@
+{
+  "data": [
+    {
+      "headTitle1": "General",
+      "headTitle2": "Menu principal",
+      "type": "headtitle"
+    },
+    {
+      "path": "administrador/materias",
+      "title": "Materias",
+      "icon": "monitor",
+      "type": "link",
+      "shortName" : "materias_administrador",
+      "active": false
+    },
+    {
+      "path": "administrador/estudiantes",
+      "title": "Estudiantes",
+      "icon": "users",
+      "type": "link",
+      "shortName" : "estudiantes_administrador",
+      "active": false
+    },
+    {
+      "path": "materias",
+      "title": "Materias",
+      "icon": "monitor",
+      "type": "link",
+      "shortName" : "materias_estudiantes",
+      "active": false
+    },
+    {
+      "path": "docente/materias",
+      "title": "Materias",
+      "icon": "monitor",
+      "type": "link",
+      "shortName" : "materias_docente",
+      "active": false
+    }
+  ]
+}
