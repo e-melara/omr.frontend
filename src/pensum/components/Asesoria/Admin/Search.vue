@@ -1,17 +1,21 @@
 <script setup lang="ts">
 import { ref } from "vue-demi";
 
-const emits = defineEmits(['search'])
+const emits = defineEmits(['search', 'addStudent'])
 
 const carnet = ref()
 const onSubmitEvent = () => {
   emits('search',  { q: carnet.value })
 };
+const addStudent = () => {
+  emits('addStudent');
+}
 </script>
 
 <template>
   <div class="d-flex">
     <div class="col-9">
+      <b-button variant="primary" @click="addStudent">Agregar estudiante</b-button>
     </div>
     <div class="col-3">
       <form

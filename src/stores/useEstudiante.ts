@@ -17,6 +17,10 @@ const searchEstudiante = async (q: string) => {
   return await authApi.get(`materias/search?q=${q}`)
 }
 
+const crearUsuarioAxios = async (params = {}) => {
+  return await authApi.post(`/register`, params)
+}
+
 export const useEstudiante = defineStore("useEstudiante", () => {
   const util = useUtilsStore();
   const localStorages = useLocalStorage();
@@ -56,6 +60,21 @@ export const useEstudiante = defineStore("useEstudiante", () => {
       try {
         const { data }: any = await searchEstudiante(q);
         estudiante.value = data
+      } catch (error) {
+        
+      }  finally {
+        util.setLoading(false);
+      }
+    },
+    async crearUsuario(params = {}) {
+      util.setLoading(true)
+      try {
+        await crearUsuarioAxios(params);
+        util.showAlert({
+          detail: 'Estudiante creado con exito!',
+          severity: 'success',
+          summary: 'Exito!'
+        });
       } catch (error) {
         
       }  finally {
