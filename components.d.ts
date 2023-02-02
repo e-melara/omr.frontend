@@ -7,6 +7,12 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    BButton: typeof import('bootstrap-vue-3')['BButton']
+    BDropdown: typeof import('bootstrap-vue-3')['BDropdown']
+    BDropdownItem: typeof import('bootstrap-vue-3')['BDropdownItem']
+    BModal: typeof import('bootstrap-vue-3')['BModal']
+    BPagination: typeof import('bootstrap-vue-3')['BPagination']
+    BTable: typeof import('bootstrap-vue-3')['BTable']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }
